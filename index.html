@@ -189,8 +189,8 @@
         // ========================================
         
         const CONFIG = {
-            owner: 'veiledtruth25',              // Ganti dengan GitHub username kamu
-            repo: 'WINBRO',        // Ganti dengan nama repository
+            owner: 'veiledtruth25',    // Ganti dengan GitHub username kamu
+            repo: 'WINBRO',            // Ganti dengan nama repository
             
             // Daftar folder yang boleh di-listing (kosongkan array untuk list semua)
             allowedFolders: ['EA', 'INSTALLER'],
@@ -199,7 +199,10 @@
             defaultPath: '',
             
             // Tampilkan ukuran file?
-            showFileSize: true
+            showFileSize: true,
+            
+            // Sembunyikan file di root? (hanya tampilkan folder)
+            hideRootFiles: true
         };
         
         // ========================================
@@ -285,6 +288,11 @@
                         }
                         return true; // File selalu ditampilkan
                     });
+                }
+                
+                // Sembunyikan file di root jika hideRootFiles = true
+                if (!path && CONFIG.hideRootFiles) {
+                    files = files.filter(file => file.type === 'dir');
                 }
                 
                 // Sort: folder dulu, lalu file, alphabetically
