@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Explorer</title>
+    <title>Index of Files</title>
     <style>
         * {
             margin: 0;
@@ -189,8 +189,8 @@
         // ========================================
         
         const CONFIG = {
-            owner: 'veiledtruth25',    // Ganti dengan GitHub username kamu
-            repo: 'WINBRO',            // Ganti dengan nama repository
+            owner: 'veiledtruth25',              // Ganti dengan GitHub username kamu
+            repo: 'WINBRO',        // Ganti dengan nama repository
             
             // Daftar folder yang boleh di-listing (kosongkan array untuk list semua)
             allowedFolders: ['EA', 'INSTALLER', 'docs'],
@@ -256,7 +256,7 @@
             
             // Update title dan breadcrumb
             const displayPath = path || '/';
-            title.textContent = path ? `📂 ${path}` : '📁 File Explorer';
+            title.textContent = `Index of /${path}`;
             
             // Buat breadcrumb
             const parts = path ? path.split('/') : [];
