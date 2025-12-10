@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index of Files</title>
+    <title>File Explorer</title>
     <style>
         * {
             margin: 0;
@@ -256,7 +256,7 @@
             
             // Update title dan breadcrumb
             const displayPath = path || '/';
-            title.textContent = `Index of /${path}`;
+            title.textContent = path ? `📂 ${path}` : '📁 File Explorer';
             
             // Buat breadcrumb
             const parts = path ? path.split('/') : [];
