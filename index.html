@@ -193,7 +193,7 @@
             repo: 'WINBRO',            // Ganti dengan nama repository
             
             // Daftar folder yang boleh di-listing (kosongkan array untuk list semua)
-            allowedFolders: ['EA', 'INSTALLER'],
+            allowedFolders: ['public', 'downloads', 'docs'],
             
             // Path default yang akan ditampilkan (kosongkan untuk root)
             defaultPath: '',
@@ -339,17 +339,21 @@
                     
                     const icon = getIcon(file.type, file.name);
                     const isDir = file.type === 'dir';
+                    
+                    // Untuk file: gunakan download_url, untuk folder: navigasi
                     const href = isDir 
                         ? `?path=${encodeURIComponent(file.path)}`
-                        : file.html_url;
-                    const target = isDir ? '' : 'target="_blank"';
+                        : file.download_url;
+                    
+                    // Tambahkan download attribute untuk file
+                    const downloadAttr = isDir ? '' : `download="${file.name}"`;
                     
                     const sizeInfo = !isDir && file.size 
                         ? `<div class="file-size">${formatSize(file.size)}</div>`
                         : '';
                     
                     li.innerHTML = `
-                        <a href="${href}" class="file-link" ${target}>
+                        <a href="${href}" class="file-link" ${downloadAttr}>
                             <span class="file-icon">${icon}</span>
                             <div class="file-info">
                                 <div class="file-name">${file.name}</div>
